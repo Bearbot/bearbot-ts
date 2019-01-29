@@ -6,27 +6,22 @@ export class BearTS {
 
     public start(token: string): void {
         this.client = new CommandoClient({
-            commandPrefix: '.',
+            commandPrefix: process.env.BEAR_PREFIX,
 			disableEveryone: true,
-			owner: '89553652477358080',
+			owner: process.env.BEAR_OWNER,
 			unknownCommandResponse: false,
         });
 
         this.client.registry
-            .registerDefaultTypes()
             .registerGroups([
                 ['util', 'Utility commands']
             ])
-            .registerDefaultCommands({
-                commandState: false,
-				help: false,
-				ping: false,
-				prefix: false,
-            })
+            .registerDefaults()
             .registerCommandsIn(path.join(__dirname, 'commands'));
 
         
         this.client.on('ready', () => {
+            console.log("> Bearbot is ready!");
             this.client.user.setActivity("with TypeScript <3");
         });
 

@@ -7,7 +7,7 @@ An in-progress rewrite of [Bearbot](https://github.com/Bearbot/Bearbot) in TypeS
 There really isn't any point in building this (it's still largely incomplete), but if you want to:
 
 ```sh
-cp .env.example .env # Fill in .env with your bot token.
+cp .env.example .env # Fill in .env with your configuration.
 npm run build
 node build/
 ```
